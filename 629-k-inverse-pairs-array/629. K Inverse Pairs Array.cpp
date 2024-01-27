@@ -1,7 +1,8 @@
+int dp[1001][1001];
+
 class Solution {
 public:
     int mod = 1e9 + 7;
-    int dp[1001][1001];
     int helper(int n, int k){
         if (k < 0) return 0;
         if (k == 0) return 1;
