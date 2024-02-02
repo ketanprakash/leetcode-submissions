@@ -1,16 +1,18 @@
 class Solution {
 public:
     vector<int> sequentialDigits(int low, int high) {
-        string str = "123456789";
-        string start = to_string(low);
-        string end = to_string(high);
+        int lowSize = log10(low) + 1;
+        int highSize = log10(high) + 1;
 
-        int size = start.size(); 
+        int size = lowSize; 
         int num;
         vector<int> ans;
-        while (size <= end.size()){
-            for (int i = 0; i <= 8 - size + 1; i++){
-                num = stoi(str.substr(i, size));
+        while (size <= highSize){
+            for (int i = 1; i <= 10 - size; i++){
+                num = 0; 
+                for (int j = i; j <= i + size - 1; j++){
+                    num = num * 10 + j;
+                }
                 if (num >= low && num <= high) ans.push_back(num);
             }
             size++;
